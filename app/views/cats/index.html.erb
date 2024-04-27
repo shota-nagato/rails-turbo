@@ -1,34 +1,49 @@
-<p style="color: green"><%= notice %></p>
+<h1 class="font-bold">
+  <span>😺</span>
+  <span>ねこ</span>
+</h1>
 
-<h1>Cats</h1>
+<div class="py-2 px-4 mt-3 rounded shadow">
+  <div>
+    検索条件
+  </div>
 
-<%# ransackを利用した検索フォームでは、form_withの代わりにsearch_form_forを使う %>
-<%= search_form_for @search do |f| %>
+  <div class="mt-2">
+    <%= search_form_for @search, html: { class: "flex gap-2" } do |f| %>
 
-  <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
-  <%= f.label :name_cont, "名前" %>
-  <%= f.search_field :name_cont %>
+      <%# `カラム名_cont`とすることで、カラムに対してLIKEを使った曖昧一致検索ができる %>
+      <%= f.label :name_cont, "名前" %>
+      <%= f.search_field :name_cont, class: "border rounded" %>
 
-  <%# `カラム名_eq`とすることで、カラムに対して完全一致検索ができる %>
-  <%= f.label :age_eq, "年齢" %>
-  <%= f.search_field :age_eq %>
-  <%= f.submit %>
+      <%# `カラム名_eq`とすることで、カラムに対して完全一致検索ができる %>
+      <%= f.label :age_eq, "年齢" %>
+      <%= f.search_field :age_eq, class: "border rounded" %>
 
-  <%# 検索結果と検索フォームをクリアする %>
-  <%= link_to "クリア", cats_path %>
-<% end %>
+      <div class="py-1 px-2 rounded text-white bg-blue-500">
+        <%= f.submit %>
+      </div>
 
-<%= sort_link(@search, :name) %>
-<%= sort_link(@search, :age) %>
-
-<div id="cats">
-  <% @cats.each do |cat| %>
-    <%= render cat %>
-    <p>
-      <%= link_to "Show this cat", cat %>
-    </p>
-  <% end %>
+      <%# 検索結果と検索フォームをクリアする %>
+      <div class="py-1 py-2 rounded border border-blue-500 text-blue-500">
+        <%= link_to "リセット", cats_path %>
+      </div>
+    <% end %>
+  </div>
 </div>
 
-<%= paginate @cats %>
-<%= link_to "New cat", new_cat_path %>
+<div class="py-2 px-4 mt-3 rounded shadow">
+  <div class="grid grid-cols-3 mb-2">
+    <div class="flex items-center text-blue-500">
+      <%= sort_link(@search, :name) %>
+    </div>
+    <div class="flex items-center text-blue-500">
+      <%= sort_link(@search, :age) %>
+    </div>
+    <div class="flex justify-end">
+      <%= link_to "登録", new_cat_path, class: "py-1 px-2 rounded text-blue-500 border border-blue-500" %>
+    </div>
+  </div>
+
+  <%= render @cats %>
+  <%= paginate @cats %>
+</div>

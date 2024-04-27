@@ -1,0 +1,25 @@
+<div class="flex flex-col flex-shrink-0 bg-[#343a40] h-full p-3">
+  <div class="flex items-center justify-center py-2">
+    <%= link_to "AMS", root_path, class: "text-white text-3xl font-semibold" %>
+  </div>
+
+  <hr class="h-px bg-gray-200 border-0">
+
+  <ul class="flex flex-col mt-4 gap-4">
+    <li>
+      <%= sidebar_link_to(cats_path, "😺", "ねこ") %>
+    </li>
+    <li>
+      <%= sidebar_link_to(root_path, "🐶", "いぬ") %>
+    </li>
+    <li>
+      <%= sidebar_link_to(root_path, "🐣", "ひよこ") %>
+    </li>
+    <li>
+      <%= sidebar_link_to(root_path, "🦔", "ハリネズミ") %>
+    </li>
+    <li>
+      <%= sidebar_link_to(root_path, "🦉", "フクロウ") %>
+    </li>
+  </ul>
+</div>

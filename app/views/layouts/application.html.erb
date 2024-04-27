@@ -11,6 +11,14 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="min-h-screen flex">
+      <div class="w-1/4">
+        <%= render "sidebar" %>
+      </div>
+      <div class="flex-1 my-4 px-2">
+        <%= render "flash" %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

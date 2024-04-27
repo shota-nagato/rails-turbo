@@ -1,12 +1,14 @@
-<div id="<%= dom_id cat %>">
-  <p>
-    <strong>Name:</strong>
+<div class="grid grid-cols-3 py-2 border-t">
+  <div class="flex items-center">
     <%= cat.name %>
-  </p>
+  </div>
 
-  <p>
-    <strong>Age:</strong>
+  <div class="flex items-center">
     <%= cat.age %>
-  </p>
+  </div>
 
+  <div class="flex gap-2 justify-end">
+    <%= link_to "編集", edit_cat_path(cat), class: "py-1 px-2 text-blue-500 border border-blue-500 rounded" %>
+    <%= button_to "削除", cat, method: :delete, class: "py-1 px-2 text-red-500 border border-red-500 rounded" %>
+  </div>
 </div>
